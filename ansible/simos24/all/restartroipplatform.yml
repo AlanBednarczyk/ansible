@@ -1,0 +1,11 @@
+---
+  # Restart roip-platform
+  - name: Restart roip-platform
+    hosts: simos24_all
+    become: yes
+    become_user: root
+    tasks:
+
+      - name: Restart roip-platform
+        command:
+          cmd: systemctl restart roip-platform

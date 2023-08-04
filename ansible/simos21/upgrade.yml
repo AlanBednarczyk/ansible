@@ -1,0 +1,20 @@
+---
+  # Play1 - update
+  - name: update repository
+    hosts: simos21
+    become: yes
+    become_user: root
+    tasks:
+
+      - name: Clean cache
+        command:
+          cmd: opkg clean
+
+
+      - name: Updating repository...
+        command: 
+          cmd: opkg update
+
+      - name: Upgrading...
+        command:
+          cmd: opkg upgrade 

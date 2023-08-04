@@ -1,0 +1,16 @@
+---
+  # i2c
+  - name: i2c
+    hosts: simos24_RSTC
+    become: yes
+    become_user: root
+    tasks:
+
+      - name: i2c
+        command:
+          cmd: i2cdetect -y 1
+        register: command_output
+
+      - debug:
+               msg="{{ command_output.stdout }}"
+

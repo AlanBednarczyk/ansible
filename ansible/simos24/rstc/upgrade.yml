@@ -1,0 +1,20 @@
+---
+  # Play1 - update
+  - name: update and upgrade repository
+    hosts: simos24_RSTC
+    become: yes
+    become_user: root
+    tasks:
+
+      - name: Clean cache
+        command:
+          cmd: apt-get clean
+
+
+      - name: Updating repository...
+        command: 
+          cmd: apt-get update
+
+      - name: Upgrading...
+        command:
+          cmd: apt-get upgrade -y

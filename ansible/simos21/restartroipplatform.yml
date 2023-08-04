@@ -1,0 +1,11 @@
+---
+  # Restart roip-platform
+  - name: Restart roip-platform
+    hosts: simos21
+    become: yes
+    become_user: root
+    tasks:
+
+      - name: Restart roip-platform
+        command:
+          cmd: /etc/init.d/roip-platform restart 

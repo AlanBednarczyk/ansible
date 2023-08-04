@@ -1,0 +1,14 @@
+---
+  # Play1 - test tworzenia katalogu
+  - name: Play Web - Create directories in hosts
+    hosts: linux
+    become: yes
+    become_user: root
+    tasks:
+      - name: create a directory 
+        file:
+          path: /opt/test
+          owner: sim
+          group: users
+          state: directory
+          mode: 0755

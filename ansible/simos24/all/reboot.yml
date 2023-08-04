@@ -1,0 +1,11 @@
+---
+  # reboot
+  - name: reboot
+    hosts: simos24_all
+    become: yes
+    become_user: root
+    tasks:
+
+      - name: reboot
+        command:
+          cmd: reboot

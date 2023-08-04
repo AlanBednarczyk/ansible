@@ -1,0 +1,12 @@
+---
+  # Play1 - ping
+  - name: ping
+    hosts: simos24_all
+    become: yes
+    become_user: root
+    tasks:
+
+      
+      - name: Ping
+        command:
+          cmd: ping -c 1 127.0.0.1
