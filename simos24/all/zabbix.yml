@@ -1,0 +1,27 @@
+---
+  # reboot
+  - name: zabbix
+    hosts: simos24_all
+    become: yes
+    become_user: root
+    tasks:
+
+      - name: install zabbix
+        command:
+          cmd: apt-get install zabbix-agent -y
+
+      - name: Dodanie na koniec zabbix.conf
+        command:
+          cmd: if ! grep -q "echo UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp" /etc/zabbix_agentd.conf; then     echo "echo UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp" >> /etc/zabbix_agentd.conf; fi
+
+      - name: Zmiana active serwera i serwera na 7.141
+        command:
+          cmd: sed -i 's/ServerActive=127.0.0.1/ServerActive=192.168.7.141/g' /etc/zabbix_agentd.conf
+
+      - name: Zmiana serwera na 7.141
+        command:
+          cmd: sed -i 's/Server=127.0.0.1/Server=192.168.7.141/g' /etc/zabbix_agentd.conf
+
+      - name: Restart zabbix
+        command:
+          cmd: systemctl restart zabbix-agent
