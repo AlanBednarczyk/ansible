@@ -17,4 +17,4 @@
 
       - name: Upgrading...
         command:
-          cmd: apt-get upgrade -y
+          cmd: apt-get upgrade -y --allow-unauthenticated
