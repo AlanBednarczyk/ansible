@@ -8,7 +8,7 @@
 
       - name: install zabbix
         command:
-          cmd: apt-get install zabbix-agent -y --allow-unauthenticated
+          cmd: apt-get install zabbix -y --allow-unauthenticated
 
       - name: Dodanie na koniec zabbix.conf
         command:
