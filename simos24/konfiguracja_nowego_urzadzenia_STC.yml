@@ -99,7 +99,7 @@
 
 
       - name: Restart zabbix
-        systemc:
+        systemd:
           name: zabbix-agent
           state: restarted
 
