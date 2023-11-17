@@ -1,7 +1,10 @@
 ---
   # i2c
   - name: i2c
-    hosts: simos24_all
+    hosts:
+      - simos24_all
+      - simos24_stc
+      - simos24_rstc
     become: yes
     become_user: root
     tasks:

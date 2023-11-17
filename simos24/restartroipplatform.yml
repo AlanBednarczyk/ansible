@@ -1,7 +1,10 @@
 ---
   # Restart roip-platform
   - name: Restart roip-platform
-    hosts: simos24_all
+    hosts:
+      - simos24_all
+      - simos24_stc
+      - simos24_rstc
     become: yes
     become_user: root
     tasks:

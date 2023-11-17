@@ -1,7 +1,10 @@
 ---
   # reinstall roip
   - name:
-    hosts: simos24_RSTC
+    hosts:
+      - simos24_all
+      - simos24_stc
+      - simos24_rstc
     become: yes
     become_user: root
     tasks:
