@@ -1,7 +1,6 @@
 ---
   # Play1 - update
   - name: update and upgrade repository
-    hosts: simos24_STC
     become: yes
     become_user: root
     tasks:
