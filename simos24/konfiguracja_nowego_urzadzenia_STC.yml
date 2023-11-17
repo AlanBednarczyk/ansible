@@ -8,23 +8,23 @@
 
 
       - name: Dodanie do boot.conf dodatkowych wpisów...
-        command: "echo \'dtoverlay=gpio-poweroff,gpiopin=23,active_low
-dtoverlay=gpio-shutdown,gpio_pin=17
-dtoverlay=gpio-led,gpio=25,trigger=heartbeat
-dtoverlay=dwc2,dr_mode=host
-dtparam=i2c_arm=on
-dtoverlay=i2c-rtc,pcf85063
-dtparam=watchdog=on
-dtoverlay=i2c-sensor,lm75,addr=0x48
-
-max_framebuffers=2
-disable_overscan=1
-
-[HDMI:1]
-hdmi_group=2
-hdmi_mode=87
-hdmi_cvt 1024 600 60 6 0 0 0
-hdmi_drive=1' >> /boot/config.txt"
+        command: echo 'dtoverlay=gpio-poweroff,gpiopin=23,active_low
+          dtoverlay=gpio-shutdown,gpio_pin=17
+          dtoverlay=gpio-led,gpio=25,trigger=heartbeat
+          dtoverlay=dwc2,dr_mode=host
+          dtparam=i2c_arm=on
+          dtoverlay=i2c-rtc,pcf85063
+          dtparam=watchdog=on
+          dtoverlay=i2c-sensor,lm75,addr=0x48
+          
+          max_framebuffers=2
+          disable_overscan=1
+          
+          [HDMI:1]
+          hdmi_group=2
+          hdmi_mode=87
+          hdmi_cvt 1024 600 60 6 0 0 0
+          hdmi_drive=1' >> /boot/config.txt
 
 
 #      - name: Removing roip components...
