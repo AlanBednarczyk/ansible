@@ -21,12 +21,6 @@
             max_framebuffers=2
             disable_overscan=1
             
-            #[HDMI:0]
-            #hdmi_group=2
-            #hdmi_mode=87
-            #hdmi_cvt 1024 600 60 6 0 0 0
-            #hdmi_drive=1
-            
             [HDMI:1]
             hdmi_group=2
             hdmi_mode=87
