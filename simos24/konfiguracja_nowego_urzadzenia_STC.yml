@@ -31,17 +31,14 @@
 
 
       - name: Removing roip components...
-        command:
-          cmd: apt-get remove roip-* simcore -y
+        command: apt-get remove roip-* simcore -y
 
 
       - name: Clean apt
-        command:
-          cmd: apt-get clean
+        command: apt-get clean
 
       - name: update apt ...
-        command:
-          cmd: apt-get update
+        command: apt-get update
 
 
       - name: install roip components
