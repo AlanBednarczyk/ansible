@@ -2,9 +2,9 @@
   # Play1 - update
   - name: update and upgrade repository
     hosts:
-      - simos24_all
-      - simos24_stc
-      - simos24_rstc
+      - simos24_ALL
+      - simos24_STC
+      - simos24_RSTC
     become: yes
     become_user: root
     tasks:
