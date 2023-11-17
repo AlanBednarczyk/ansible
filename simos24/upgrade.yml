@@ -25,5 +25,6 @@
           warn: false
 
       - name: Restart roip-platform
-        command:
-          cmd: systemctl restart roip-platform
+        systemd:
+          name: roip-platform
+          state: restarted

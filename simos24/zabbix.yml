@@ -32,5 +32,6 @@
 
 
       - name: Restart zabbix
-        command:
-          cmd: systemctl restart zabbix-agent
+        systemc:
+          name: zabbix-agent
+          state: restarted

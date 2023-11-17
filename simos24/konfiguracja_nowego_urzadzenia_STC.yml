@@ -34,9 +34,6 @@
         command:
           cmd: apt-get remove roip-* simcore -y
 
-      - name: Autoremove
-        command:
-          cmd: apt-get autoremove -y
 
       - name: Clean apt
         command:
@@ -57,9 +54,10 @@
           cmd: systemctl daemon-reload
 
 
-      - name: Restart roip components...
-        command:
-          cmd: systemctl restart roip-platform
+      - name: Restart roip-platform
+        systemd:
+          name: roip-platform
+          state: restarted
 
 
       - name: Upgrading...
@@ -70,8 +68,9 @@
 
 
       - name: Restart roip-platform
-        command:
-          cmd: systemctl restart roip-platform
+        systemd:
+          name: roip-platform
+          state: restarted
 
 
       - name: install zabbix
@@ -100,8 +99,9 @@
 
 
       - name: Restart zabbix
-        command:
-          cmd: systemctl restart zabbix-agent
+        systemc:
+          name: zabbix-agent
+          state: restarted
 
       - name: Restart urządzenia
         command:
