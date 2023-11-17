@@ -45,7 +45,7 @@
 
 
       - name: install roip components
-        apt:
+        apt-get:
           name: roip-panel
           state: present
           allow-unauthenticated: yes
