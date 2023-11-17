@@ -45,7 +45,7 @@
 
 
       - name: install roip components
-        command: apt-get install roip-panel -y allow-unauthenticated
+        command: apt-get install roip-panel -y --allow-unauthenticated
 
 
       - name: Reload daemon
