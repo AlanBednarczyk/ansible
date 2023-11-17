@@ -10,97 +10,97 @@
       - name: Dodanie do boot.conf dodatkowych wpisów...
         command:
           cmd: echo "dtoverlay=gpio-poweroff,gpiopin=23,active_low
-            dtoverlay=gpio-shutdown,gpio_pin=17
-            dtoverlay=gpio-led,gpio=25,trigger=heartbeat
-            dtoverlay=dwc2,dr_mode=host
-            dtparam=i2c_arm=on
-            dtoverlay=i2c-rtc,pcf85063
-            dtparam=watchdog=on
-            dtoverlay=i2c-sensor,lm75,addr=0x48
-            
-            max_framebuffers=2
-            disable_overscan=1
-            
-            [HDMI:1]
-            hdmi_group=2
-            hdmi_mode=87
-            hdmi_cvt 1024 600 60 6 0 0 0
-            hdmi_drive=1" >> /boot/conf.txt
+dtoverlay=gpio-shutdown,gpio_pin=17
+dtoverlay=gpio-led,gpio=25,trigger=heartbeat
+dtoverlay=dwc2,dr_mode=host
+dtparam=i2c_arm=on
+dtoverlay=i2c-rtc,pcf85063
+dtparam=watchdog=on
+dtoverlay=i2c-sensor,lm75,addr=0x48
+
+max_framebuffers=2
+disable_overscan=1
+
+[HDMI:1]
+hdmi_group=2
+hdmi_mode=87
+hdmi_cvt 1024 600 60 6 0 0 0
+hdmi_drive=1" >> /boot/config.txt
 
 
-      - name: Removing roip components...
-        command:
-          cmd: apt-get remove roip-* simcore -y
-
-      - name: Autoremove
-        command:
-          cmd: apt-get autoremove -y
-
-      - name: Clean apt
-        command:
-          cmd: apt-get clean
-
-      - name: update apt ...
-        command:
-          cmd: apt-get update
-
-
-      - name: install roip components
-        command:
-          cmd: apt-get install roip-panel -y --allow-unauthenticated
-
-
-      - name: Reload daemon
-        command:
-          cmd: systemctl daemon-reload
-
-
-      - name: Restart roip components...
-        command:
-          cmd: systemctl restart roip-platform
-
-
-      - name: Upgrading...
-        command:
-          cmd: apt-get upgrade -y --allow-unauthenticated
-        args:
-          warn: false
-
-
-      - name: Restart roip-platform
-        command:
-          cmd: systemctl restart roip-platform
-
-
-      - name: install zabbix
-        command:
-          cmd: apt-get install zabbix -y --allow-unauthenticated
-        args:
-          warn: false
-
-
-      - name: Dodanie na koniec zabbix.conf
-        command: "bash -c 'if ! grep -q \"UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp\" /etc/zabbix_agentd.conf; then echo \"UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp\" >> /etc/zabbix_agentd.conf; fi'"
-
-
-      - name: Zmiana active serwera i serwera na 7.141
-        replace:
-          path: /etc/zabbix_agentd.conf
-          regexp: 'ServerActive=127.0.0.1'
-          replace: 'ServerActive=192.168.7.141'
-
-
-      - name: Zmiana serwera na 7.141
-        replace:
-          path: /etc/zabbix_agentd.conf
-          regexp: 'Server=127.0.0.1'
-          replace: 'Server=192.168.7.141'
-
-
-      - name: Restart zabbix
-        command:
-          cmd: systemctl restart zabbix-agent
-
-      - name: Restart urządzenia
-        command:
-          cmd: reboot
+#      - name: Removing roip components...
+#        command:
+#          cmd: apt-get remove roip-* simcore -y
+#
+#      - name: Autoremove
+#        command:
+#          cmd: apt-get autoremove -y
+#
+#      - name: Clean apt
+#        command:
+#          cmd: apt-get clean
+#
+#      - name: update apt ...
+#        command:
+#          cmd: apt-get update
+#
+#
+#      - name: install roip components
+#        command:
+#          cmd: apt-get install roip-panel -y --allow-unauthenticated
+#
+#
+#      - name: Reload daemon
+#        command:
+#          cmd: systemctl daemon-reload
+#
+#
+#      - name: Restart roip components...
+#        command:
+#          cmd: systemctl restart roip-platform
+#
+#
+#      - name: Upgrading...
+#        command:
+#          cmd: apt-get upgrade -y --allow-unauthenticated
+#        args:
+#          warn: false
+#
+#
+#      - name: Restart roip-platform
+#        command:
+#          cmd: systemctl restart roip-platform
+#
+#
+#      - name: install zabbix
+#        command:
+#          cmd: apt-get install zabbix -y --allow-unauthenticated
+#        args:
+#          warn: false
+#
+#
+#      - name: Dodanie na koniec zabbix.conf
+#        command: "bash -c 'if ! grep -q \"UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp\" /etc/zabbix_agentd.conf; then echo \"UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp\" >> /etc/zabbix_agentd.conf; fi'"
+#
+#
+#      - name: Zmiana active serwera i serwera na 7.141
+#        replace:
+#          path: /etc/zabbix_agentd.conf
+#          regexp: 'ServerActive=127.0.0.1'
+#          replace: 'ServerActive=192.168.7.141'
+#
+#
+#      - name: Zmiana serwera na 7.141
+#        replace:
+#          path: /etc/zabbix_agentd.conf
+#          regexp: 'Server=127.0.0.1'
+#          replace: 'Server=192.168.7.141'
+#
+#
+#      - name: Restart zabbix
+#        command:
+#          cmd: systemctl restart zabbix-agent
+#
+#      - name: Restart urządzenia
+#        command:
+#          cmd: reboot
