@@ -32,6 +32,7 @@
           cmd: systemctl daemon-reload
 
 
-      - name: Restart roip components...
-        command:
-          cmd: systemctl restart roip-platform
+      - name: Restart roip-platform
+        systemd:
+          name: roip-platform
+          state: restarted

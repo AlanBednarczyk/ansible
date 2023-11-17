@@ -34,9 +34,10 @@
           cmd: systemctl daemon-reload
 
 
-      - name: Restart roip components...
-        command:
-          cmd: systemctl restart roip-platform
+      - name: Restart roip-platform
+        systemd:
+          name: roip-platform
+          state: restarted
 
 
       - name: Upgrading...
@@ -46,8 +47,9 @@
           warn: false
 
       - name: Restart roip-platform
-        command:
-          cmd: systemctl restart roip-platform
+        systemd:
+          name: roip-platform
+          state: restarted
 
       - name: install zabbix
         command:
@@ -75,5 +77,6 @@
 
 
       - name: Restart zabbix
-        command:
-          cmd: systemctl restart zabbix-agent
+        systemd:
+          name: zabbix-agent
+          state: restarted
