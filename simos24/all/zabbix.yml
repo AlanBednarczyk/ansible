@@ -9,6 +9,9 @@
       - name: install zabbix
         command:
           cmd: apt-get install zabbix -y --allow-unauthenticated
+        args:
+          warn: false
+
 
       - name: Dodanie na koniec zabbix.conf
         command: "bash -c 'if ! grep -q \"UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp\" /etc/zabbix_agentd.conf; then echo \"UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp\" >> /etc/zabbix_agentd.conf; fi'"
