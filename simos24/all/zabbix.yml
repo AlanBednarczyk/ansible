@@ -16,14 +16,14 @@
 
       - name: Zmiana active serwera i serwera na 7.141
         replace:
-          path: /etc/zabbix_agent.conf
+          path: /etc/zabbix_agentd.conf
           regexp: 'ServerActive=127.0.0.1'
           replace: 'ServerActive=192.168.7.141'
 
 
       - name: Zmiana serwera na 7.141
         replace:
-          path: /etc/zabbix_agent.conf
+          path: /etc/zabbix_agentd.conf
           regexp: 'Server=127.0.0.1'
           replace: 'Server=192.168.7.141'
 
