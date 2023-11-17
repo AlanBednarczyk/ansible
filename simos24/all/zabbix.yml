@@ -11,9 +11,8 @@
           cmd: apt-get install zabbix -y --allow-unauthenticated
 
       - name: Dodanie na koniec zabbix.conf
-        command:
-          script: |
-            if ! grep -q "echo UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp" /etc/zabbix_agentd.conf; then echo "echo UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp" >> /etc/zabbix_agentd.conf; fi
+        command: "bash -c 'if ! grep -q \"echo UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp\" /etc/zabbix_agentd.conf; then echo \"echo UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp\" >> /etc/zabbix_agentd.conf; fi'"
+
 
       - name: Zmiana active serwera i serwera na 7.141
         command:
