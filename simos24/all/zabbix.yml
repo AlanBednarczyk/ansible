@@ -12,7 +12,7 @@
 
       - name: Dodanie na koniec zabbix.conf
         command:
-          command: |
+          cmd: |
             if ! grep -q "echo UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp" /etc/zabbix_agentd.conf; then    
               echo "echo UserParameter=rpi.cpuTemperature,cat /sys/class/thermal/thermal_zone0/temp" >> /etc/zabbix_agentd.conf
             fi
